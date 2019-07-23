@@ -1,0 +1,7 @@
+*.o.cmd
+*.o
+*.cmd
+*.mod*
+/modules.order
+/Module.symvers
+/8189es.ko
