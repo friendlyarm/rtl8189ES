@@ -183,7 +183,7 @@ extern void rtl871x_cedbg(const char *fmt, ...);
 	#define _dbgdump rtl871x_cedbg
 	#define _seqdump(sel, fmt, arg...) _dbgdump(fmt, ##arg)
 #elif defined PLATFORM_LINUX
-	#define _dbgdump printk
+	#define _dbgdump pr_debug
 	#define _seqdump seq_printf
 #elif defined PLATFORM_FREEBSD
 	#define _dbgdump printf
