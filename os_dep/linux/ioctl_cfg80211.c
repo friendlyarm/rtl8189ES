@@ -1897,7 +1897,10 @@ enum nl80211_iftype {
 */
 static int cfg80211_rtw_change_iface(struct wiphy *wiphy,
 				     struct net_device *ndev,
-				     enum nl80211_iftype type, u32 *flags,
+				     enum nl80211_iftype type,
+				     #if (LINUX_VERSION_CODE < KERNEL_VERSION(4,12,0))
+				     u32 *flags,
+				     #endif
 				     struct vif_params *params)
 {
 	enum nl80211_iftype old_type;
@@ -4110,7 +4113,12 @@ static int
 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,1,0))
 		unsigned char name_assign_type,
 	#endif
+	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,12,0))
+		enum nl80211_iftype type, struct vif_params *params)
+	#else
 		enum nl80211_iftype type, u32 *flags, struct vif_params *params)
+	#endif
+
 {
 	int ret = 0;
 	struct net_device* ndev = NULL;
